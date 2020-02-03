@@ -1,79 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Améliorations d'objets</title>
-  </head>
-  <body>
-    <script>
-      /*
-        RAPPEL :
-        Jusqu'à ES5 on disposait des options suivantes pour parcourir les
-        propriétés d'un objet :
 
-          for...in
-            qui parcourt toutes les propriétés énumérables de l'objet et de sa
-            chaîne de prototype.
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Améliorations d'objets</title>
+</head>
 
-          Object.keys(obj)
-            qui renvoie un tableau des clés des propriétés propres énumérables
-            de l'objet fourni.
+<body>
+  <script>
+    /*
+      RAPPEL :
+      Jusqu'à ES5 on disposait des options suivantes pour parcourir les
+      propriétés d'un objet :
 
-        NOUVEAU !
-        ES6 introduit 2 nouvelles méthodes sur l'objet `Object` :
+        for...in
+          qui parcourt toutes les propriétés énumérables de l'objet et de sa
+          chaîne de prototype.
 
-          Object.entries(obj)
-            qui renvoie un tableau de paires [clé, valeur] des propriétés
-            propres énumérables de l'objet fourni.
+        Object.keys(obj)
+          qui renvoie un tableau des clés des propriétés propres énumérables
+          de l'objet fourni.
 
-          Object.values(obj)
-            qui renvoie un tableau des valeurs des propriétés propres
-            énumérables de l'objet fourni.
+      NOUVEAU !
+      ES6 introduit 2 nouvelles méthodes sur l'objet `Object` :
 
-        Exemple :
-          const obj = Object.assign(
-            Object.create({ // objet contenant le prototype
-              d: 42
-            }),
-            { // objet contenant les propriétés propres
-              a: 1,
-              b: 2,
-              c: 3
-            }
-          );
-          console.log(Object.values(obj)); // [1, 2, 3]
-          console.log(Object.entries(obj)); // [["a", 1], ["b", 2], ["c", 3]]
-      */
+        Object.entries(obj)
+          qui renvoie un tableau de paires [clé, valeur] des propriétés
+          propres énumérables de l'objet fourni.
 
-      /*
-          1. Créez un objet qui représente une classe (d'élèves). Cet objet
-          est vide. Nous le renseignerons plus tard.
+        Object.values(obj)
+          qui renvoie un tableau des valeurs des propriétés propres
+          énumérables de l'objet fourni.
 
-          2. Créez un objet qui représente une classe spécialisée à partir de
-          l'objet précédent qui fera donc office de prototype
-          ( pensez à utilisez Object.create() ).
+      Exemple :
+        const obj = Object.assign(
+          Object.create({ // objet contenant le prototype
+            d: 42
+          }),
+          { // objet contenant les propriétés propres
+            a: 1,
+            b: 2,
+            c: 3
+          }
+        );
+        console.log(Object.values(obj)); // [1, 2, 3]
+        console.log(Object.entries(obj)); // [["a", 1], ["b", 2], ["c", 3]]
+    */
 
-          3. La classe spécialisée contient 16 propriétés. Chaque propriété est
-          le nom de l'élève et a pour valeur son numéro de sécurité sociale.
+    /*
+        1. Créez un objet qui représente une classe (d'élèves). Cet objet
+        est vide. Nous le renseignerons plus tard.
 
-          4. Ajoutez 2 méthodes dans le prototype de la classe spécialisée. La
-          classe (d'élèves) contient donc 2 méthodes :
-          - La première, si elle est exécutée, affiche successivement, dans la
-          console, la liste des numéros de sécurité sociale de chaque élève de
-          la classe.
-          - La deuxième, si elle est exécutée, affiche, dans la console, pour
-          chaque élève de la classe : "Je m'appelle X et mon numéro de sécurité
-          sociale est : Y" (ou X est le nom de l'élève et Y son numéro de
-          sécurité sociale).
+        2. Créez un objet qui représente une classe spécialisée à partir de
+        l'objet précédent qui fera donc office de prototype
+        ( pensez à utilisez Object.create() ).
 
-          N.B : Pensez à utiliser le mot-clé this pour faire référence à l'objet
-          dans lequel les méthodes sont exécutées.
-      */
-    </script>
-    <noscript>
-      <p>VirtuoWorks® - tous droits réservés©</p>
-    </noscript>
-  </body>
+        3. La classe spécialisée contient 16 propriétés. Chaque propriété est
+        le nom de l'élève et a pour valeur son numéro de sécurité sociale.
+
+        4. Ajoutez 2 méthodes dans le prototype de la classe spécialisée. La
+        classe (d'élèves) contient donc 2 méthodes :
+        - La première, si elle est exécutée, affiche successivement, dans la
+        console, la liste des numéros de sécurité sociale de chaque élève de
+        la classe.
+        - La deuxième, si elle est exécutée, affiche, dans la console, pour
+        chaque élève de la classe : "Je m'appelle X et mon numéro de sécurité
+        sociale est : Y" (ou X est le nom de l'élève et Y son numéro de
+        sécurité sociale).
+
+        N.B : Pensez à utiliser le mot-clé this pour faire référence à l'objet
+        dans lequel les méthodes sont exécutées.
+    */
+    const classe = {};
+    const youssouf = 10213;
+    const stephane = 10214;
+    const akbar = 10215;
+    const sissako = 10216;
+    const jessie = 10217;
+    const anne = 1272;
+    const lucy = 10253;
+    const ida = 10220;
+    const clement = 10221;
+    const nicolas = 10222;
+    const aziz = 10223;
+    const jordan = 10224;
+    const benoit = 10225;
+    const victoria = 10226;
+    const yanis = 10227;
+    const nepheline = 10232;
+
+
+    const eleves = {
+      youssouf,
+      stephane,
+      akbar,
+      sissako,
+      jessie,
+      anne,
+      lucy,
+      ida,
+      clement,
+      nicolas,
+      aziz,
+      jordan,
+      benoit,
+      victoria,
+      yanis,
+      nepheline
+    };
+
+
+ 
+    const classeSpecialisee = Object.assign(Object.create(classe), eleves);
+    classeSpecialisee.numSecu = function () {
+
+      Object.values(this).forEach(element => {
+        if (typeof element != "function") {
+          console.log(element);
+        }
+      });
+    }
+
+    classeSpecialisee.presentation = function () {
+      const valeurs = Object.entries(this);
+      for (let i = 0; i < valeurs.length; i++) {
+        if (typeof valeurs[i][1] != "function") {
+          console.log(`Je m'appelle ${valeurs[i][0]} et mon numéro de sécurité sociale est : ${valeurs[i][1]}`);
+
+        }
+      }
+    };
+    classeSpecialisee.numSecu();
+    classeSpecialisee.presentation();
+    
+
+
+
+
+
+  </script>
+  <noscript>
+    <p>VirtuoWorks® - tous droits réservés©</p>
+  </noscript>
+</body>
+
 </html>

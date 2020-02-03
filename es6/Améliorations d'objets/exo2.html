@@ -46,6 +46,35 @@
         voyager dans le temps (ces deux propriétés seront des méthodes de la
         DeLorean volante).
       */
+
+
+          const modele = "Delorean DMC-12";
+          const roues = 4;
+          const look = "rétro-futuriste";
+          const options = ["portes papillon", "caisse en fibre de verre"];
+          const timeTravel = function () {
+            console.log("Voyage dans le temps");
+          };
+          const flyingCar = function (){
+            console.log("Currently flying toward New-York");
+          }
+
+          const deLorean = {
+            modele,
+            roues,
+            look,
+            options
+          } 
+
+          /* 2 */
+          const copy = Object.create(deLorean);
+          console.log(copy);
+
+          /* 3 */
+          const flyingDelorean = Object.assign({flyingCar, timeTravel}, deLorean);
+          console.log(flyingDelorean);
+
+          
     </script>
     <noscript>
       <p>VirtuoWorks® - tous droits réservés©</p>
