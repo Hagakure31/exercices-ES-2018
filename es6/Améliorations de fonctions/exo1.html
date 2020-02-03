@@ -1,49 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Améliorations de fonctions</title>
-  </head>
-  <body>
-    <script>
-      /*
-        NOUVEAU !
-        ES6 introduit la possibilité de définir des valeurs par défaut pour les
-        arguments des fonctions. En d'autres termes, si un argument n'est pas
-        définit à l'exécution, il prendra pour valeur la valeur fournie lors de
-        la déclaration de la fonction.
 
-        En ES6+ :
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Améliorations de fonctions</title>
+</head>
 
-        let addition = function(nombre1 = 50, nombre2 = 50) {
-          return nombre1 + nombre2;
-        }
+<body>
+  <script src="C:\Users\az02759\Documents\formation Js\formation-module-es3-5\exercices\objets\blender.js">
+    /*
+      NOUVEAU !
+      ES6 introduit la possibilité de définir des valeurs par défaut pour les
+      arguments des fonctions. En d'autres termes, si un argument n'est pas
+      définit à l'exécution, il prendra pour valeur la valeur fournie lors de
+      la déclaration de la fonction.
 
-        addition(); // retourne 100
-        addition(8); // retourne 58
-        addition(8,2); // retourne 10
-        addition(undefined, 12); // retourne 62
+      En ES6+ :
 
-        En ES5- :
+      let addition = function(nombre1 = 50, nombre2 = 50) {
+        return nombre1 + nombre2;
+      }
 
-        var addition = function(nombre1, nombre2) {
-          nombre1 = 50 || nombre1;
-          nombre2 = 50 || nombre2;
-          return nombre1 + nombre2;
-        }
-      */
+      addition(); // retourne 100
+      addition(8); // retourne 58
+      addition(8,2); // retourne 10
+      addition(undefined, 12); // retourne 62
 
-      /*
-        1. Retrouvez le fichier blender.js de la partie ES5 et modifiez chaque
-        méthodes pour faire en sorte qu'elles produisent un résultat
-        satisfaisant lors de leur exécution Y COMPRIS SANS leur fournir de
-        valeur d'argument à l'exécution.
-      */
-    </script>
-    <noscript>
-      <p>VirtuoWorks® - tous droits réservés©</p>
-    </noscript>
-  </body>
+      En ES5- :
+
+      var addition = function(nombre1, nombre2) {
+        nombre1 = 50 || nombre1;
+        nombre2 = 50 || nombre2;
+        return nombre1 + nombre2;
+      }
+    */
+
+    /*
+      1. Retrouvez le fichier blender.js de la partie ES5 et modifiez chaque
+      méthodes pour faire en sorte qu'elles produisent un résultat
+      satisfaisant lors de leur exécution Y COMPRIS SANS leur fournir de
+      valeur d'argument à l'exécution.
+    */
+
+  </script>
+  <script>
+    blender.mixerDesNombres();
+    blender.mixerDesChaines();
+    blender.mixerDesBooleens();
+    blender.mixerDesTableaux();
+    blender.mixerDesObjets();
+    blender.mixerDesFonctions();
+    blender.mixerDeTout();
+  </script>
+  <noscript>
+    <p>VirtuoWorks® - tous droits réservés©</p>
+  </noscript>
+</body>
+
 </html>
