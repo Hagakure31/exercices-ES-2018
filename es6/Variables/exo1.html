@@ -69,42 +69,42 @@
       */
       //
       (function() {
-        var foo = "foo";
+        let foo = "foo";
         foo = "bar";
         console.log(foo);
-      })()
+      })();
 
       //
       (function() {
-        var messageDeFin;
-        var choixDifficile = prompt("Voulez-vous ");
-      })()
+        let messageDeFin;
+        const choixDifficile = prompt("Voulez-vous ");
+      })();
 
       //
       (function() {
-        var objet = {
+        const objet = {
           name: "toto"
         };
         objet.test = 123;
-      })()
+      })();
 
       //
       (function() {
-        var stuff;
+        let stuff;
         stuff = "enfin fini !";
-      })()
+      })();
 
       //
       (function() {
         function doStuff() {
-          var
+          let
         }
-      })()
+      })();
 
       /*
         Corrigez les codes suivants.
       */
-      const GRAVITY_ACCELERATION = 9.81;
+      let GRAVITY_ACCELERATION = 9.81;
 
       function reverseGravity() {
         GRAVITY_ACCELERATION = -GRAVITY_ACCELERATION;
