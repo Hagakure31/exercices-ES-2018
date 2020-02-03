@@ -58,6 +58,31 @@
         précédente, modifiez la fonction cluedo afin qu'elle renvoie des
         accusations aléatoires en combinant les 3 tableaux précédents.
       */
+
+      // function cluedo(suspect, pièce, arme){
+      //   var accusation = `C'est ${suspect} qui a tué le Docteur Lenoir dans ${pièce} avec ${arme}` 
+      //   return accusation;
+      // }
+
+      var suspects = ["Brian", "Mehdi", "Kenshin", "Superman"];
+      var pièces = ["la cuisine", "le grenier", "le salon", "la bibliothèque"];
+      var armes = ["un Couteau", "une Hache", "un Revolver", "du Poison"];
+
+      function randomNumber(){
+        var N = Math.floor(Math.random()* 4);
+        if (N > 3){
+          N = 3;
+        }
+        return N; 
+      }
+
+      function cluedo(suspect, pièce, arme){
+        var accusation = `C'est ${suspects[randomNumber()]} qui a tué le Docteur Lenoir dans ${pièces[randomNumber()]} avec ${armes[randomNumber()]}`; 
+        return accusation;
+      }
+
+      alert(cluedo());
+
     </script>
     <noscript>
       <p>VirtuoWorks® - tous droits réservés©</p>
