@@ -1,48 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Améliorations de tableaux</title>
-  </head>
-  <body>
-    <script>
-      /*
-        NOUVEAU !
-        ES6 introduit 2 nouvelles méthodes pour la création de tableaux,
-        `Array.from()` et `Array.of()`.
 
-        `Array.from()` renvoie un nouveau tableau à partir d'un objet itérable
-        (chaîne de caractère par exemple) ou semblable à un tableau.
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Améliorations de tableaux</title>
+</head>
 
-        On appelle itérable un objet dont les propriétés peuvent être parcourues
-        dans une boucle for
+<body>
+  <script>
+    /*
+      NOUVEAU !
+      ES6 introduit 2 nouvelles méthodes pour la création de tableaux,
+      `Array.from()` et `Array.of()`.
 
-        Un objet semblable à un tableau (array-like) est un objet qui possède
-        une propriété `.length`. Par exemple :
+      `Array.from()` renvoie un nouveau tableau à partir d'un objet itérable
+      (chaîne de caractère par exemple) ou semblable à un tableau.
 
-          const tableau = Array.from({ length: 3 });
-          console.log(tableau); // [undefined, undefined, undefined]
+      On appelle itérable un objet dont les propriétés peuvent être parcourues
+      dans une boucle for
 
-        Documentation :
-        - https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/from
-        - https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/of
-      */
+      Un objet semblable à un tableau (array-like) est un objet qui possède
+      une propriété `.length`. Par exemple :
 
-      /*
-        1. Créez 10 div qui contiennent chacune un nombre de 1 à 10.
+        const tableau = Array.from({ length: 3 });
+        console.log(tableau); // [undefined, undefined, undefined]
 
-        2. Récuperez une référence à la collection contenant toutes les div du
-        document. Vous pouvez utiliser window.document.getElementsByTagName()
+      Documentation :
+      - https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/from
+      - https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/of
+    */
 
-        3. En utilisant Array.from() et son deuxième argument optionnel (voir
-        documentation), obtenez un Array contenant chaque nombre de chaque div.
-        (c'est à dire [1,2,3,4,5,6,7,8,9,10])
-      */
-    </script>
-    <noscript>
-      <p>VirtuoWorks® - tous droits réservés©</p>
-    </noscript>
-  </body>
+    /*
+      1. Créez 10 div qui contiennent chacune un nombre de 1 à 10.
+
+      2. Récuperez une référence à la collection contenant toutes les div du
+      document. Vous pouvez utiliser window.document.getElementsByTagName()
+
+      3. En utilisant Array.from() et son deuxième argument optionnel (voir
+      documentation), obtenez un Array contenant chaque nombre de chaque div.
+      (c'est à dire [1,2,3,4,5,6,7,8,9,10])
+    */
+
+    //1. Créez 10 div qui contiennent chacune un nombre de 1 à 10.
+    function divGenerator() {
+      const div = document.createElement("div");
+      document.body.appendChild(div);
+      return div;
+    }
+
+
+
+    function generator(nbDivs = 10) {
+      for (let i = 0; i < nbDivs; i++) {
+        const div = divGenerator();
+        div.innerHTML = Math.floor(Math.random() * nbDivs + 1);
+      }
+    }
+
+
+    generator();
+
+    /*2. Récuperez une référence à la collection contenant toutes les div du
+    document. Vous pouvez utiliser window.document.getElementsByTagName()
+    */
+
+    const divs = document.getElementsByTagName('div');
+    console.log(divs);
+
+    /*3. En utilisant Array.from() et son deuxième argument optionnel (voir
+      documentation), obtenez un Array contenant chaque nombre de chaque div.
+      (c'est à dire [1,2,3,4,5,6,7,8,9,10])
+    */
+
+     const tableau = Array.from(divs, div => parseInt(div.innerHTML, 10));
+     console.log(tableau);
+
+  </script>
+  <noscript>
+    <p>VirtuoWorks® - tous droits réservés©</p>
+  </noscript>
+</body>
+
 </html>

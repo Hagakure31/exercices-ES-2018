@@ -1,62 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Améliorations de tableaux</title>
-  </head>
-  <body>
-    <script>
-      /*
-        NOUVEAU !
-        ES6 introduit 2 nouvelles méthodes d'instance pour la recherche de
-        valeurs dans un tableau, `Array.prototype.find()` et
-        `Array.prototype.findIndex()`.
 
-        `Array.prototype.find()` renvoie la valeur du PREMIER ÉLÉMENT trouvé
-        dans le tableau qui respecte la condition donnée par la fonction de test
-        passée en argument.
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Améliorations de tableaux</title>
+</head>
 
-        `Array.prototype.find(fonctionDeTest(element[, index[, tableau]])[, thisArg])`
-        prend en argument :
-          - une fonction de test qui reçoit l'élément courant du tableau et
-            optionnellement l'index courant ainsi qu'une référence au tableau
-            parcouru
-          - en option la valeur que prendra le mot-clé `this` à l'intérieur de
-            la fonction de test
+<body>
+  <script>
+    /*
+      NOUVEAU !
+      ES6 introduit 2 nouvelles méthodes d'instance pour la recherche de
+      valeurs dans un tableau, `Array.prototype.find()` et
+      `Array.prototype.findIndex()`.
 
-        Exemples :
-          const nombres = [1, 2, 10, 99, -10, 5, Infinity];
+      `Array.prototype.find()` renvoie la valeur du PREMIER ÉLÉMENT trouvé
+      dans le tableau qui respecte la condition donnée par la fonction de test
+      passée en argument.
 
-          nombres.find(function(element) {
-            return element > 10;
-          }); // renvoie 99
+      `Array.prototype.find(fonctionDeTest(element[, index[, tableau]])[, thisArg])`
+      prend en argument :
+        - une fonction de test qui reçoit l'élément courant du tableau et
+          optionnellement l'index courant ainsi qu'une référence au tableau
+          parcouru
+        - en option la valeur que prendra le mot-clé `this` à l'intérieur de
+          la fonction de test
 
-          nombres.find(function(element, index) {
-            return element > 10 && index >= 4;
-          }) // renvoie Infinity
+      Exemples :
+        const nombres = [1, 2, 10, 99, -10, 5, Infinity];
 
-        Documentation :
-        - https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/find
-        - https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/findIndex
-      */
+        nombres.find(function(element) {
+          return element > 10;
+        }); // renvoie 99
 
-      /*
-        1. Créez 10 div qui contiennent chacune un nombre de 1 à 10.
+        nombres.find(function(element, index) {
+          return element > 10 && index >= 4;
+        }) // renvoie Infinity
 
-        2. Récuperez une référence à la collection contenant toutes les div du
-        document. Vous pouvez utiliser window.document.getElementsByTagName()
+      Documentation :
+      - https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/find
+      - https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/findIndex
+    */
 
-        3. Utilisez Array.from pour créér un objet de type Array à l'aide de la
-        l'objet type HTMLCollection obtenu.
+    /*
+      1. Créez 10 div qui contiennent chacune un nombre de 1 à 10.
 
-        4. Utilisez la méthode .find() pour récupérer la div dont le contenu est
-        le nombre 5.
-      */
-    </script>
-    <noscript>
-      <p>VirtuoWorks® - tous droits réservés©</p>
-    </noscript>
-  </body>
+      2. Récuperez une référence à la collection contenant toutes les div du
+      document. Vous pouvez utiliser window.document.getElementsByTagName()
+
+      3. Utilisez Array.from pour créér un objet de type Array à l'aide de la
+      l'objet type HTMLCollection obtenu.
+
+      4. Utilisez la méthode .find() pour récupérer la div dont le contenu est
+      le nombre 5.
+    */
+
+    //1. Créez 10 div qui contiennent chacune un nombre de 1 à 10.
+    function divGenerator() {
+      const div = document.createElement("div");
+      document.body.appendChild(div);
+      return div;
+    }
+
+
+
+    function generator(nbDivs = 10) {
+      for (let i = 0; i < nbDivs; i++) {
+        const div = divGenerator();
+        div.innerHTML = Math.floor(Math.random() * nbDivs + 1);
+      }
+    }
+    generator();
+    //2. Récuperez une référence à la collection contenant toutes les div du document. Vous pouvez utiliser window.document.getElementsByTagName()
+
+    const divs = document.getElementsByTagName('div');
+
+    //3. Utilisez Array.from pour créér un objet de type Array à l'aide de l'objet type HTMLCollection obtenu.
+
+    const arrayOfDivs = Array.from(divs, div => parseInt(div.innerHTML));
+    console.log(arrayOfDivs);
+    /* 4. Utilisez la méthode .find() pour récupérer la div dont le contenu est
+    le nombre 5.
+    */
+    const found = arrayOfDivs.findIndex(element => element === 5);
+
+    console.log(found);
+
+
+  </script>
+  <noscript>
+    <p>VirtuoWorks® - tous droits réservés©</p>
+  </noscript>
+</body>
+
 </html>
