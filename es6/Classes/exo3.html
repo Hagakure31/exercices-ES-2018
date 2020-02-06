@@ -1,121 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Classes</title>
-  </head>
-  <body>
-    <script>
-      /*
-        RAPPEL :
-        En JavaScript il est possible de définir sur un objet ce que l'on
-        appelle des accesseurs et mutateurs de propriétés (via les méthodes
-        `Object.defineProperty()`, `Object.defineProperties()` et
-        `Object.create()`).
-        L'accès en lecture ou en écriture à ces propriétés provoque un appel
-        respectivement à la fonction `get` et à la fonction `set` définies dans
-        le descripteur de propriété associé.
 
-        Exemple :
-          const obj = {};
-          Object.defineProperty(obj, "réponseÀLaQuestionSecrèteDeLUnivers", {
-            get: function() {
-              console.log("Chut... ne le dites à personne !");
-              return 42;
-            },
-            set: function(nouvelleValeur) {
-              console.log("Personne ne change la réponse à la question secrète de l'Univers. Non mais z'êtes pas bien !")
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Classes</title>
+</head>
+
+<body>
+  <script>
+    /*
+      RAPPEL :
+      En JavaScript il est possible de définir sur un objet ce que l'on
+      appelle des accesseurs et mutateurs de propriétés (via les méthodes
+      `Object.defineProperty()`, `Object.defineProperties()` et
+      `Object.create()`).
+      L'accès en lecture ou en écriture à ces propriétés provoque un appel
+      respectivement à la fonction `get` et à la fonction `set` définies dans
+      le descripteur de propriété associé.
+
+      Exemple :
+        const obj = {};
+        Object.defineProperty(obj, "réponseÀLaQuestionSecrèteDeLUnivers", {
+          get: function() {
+            console.log("Chut... ne le dites à personne !");
+            return 42;
+          },
+          set: function(nouvelleValeur) {
+            console.log("Personne ne change la réponse à la question secrète de l'Univers. Non mais z'êtes pas bien !")
+            return;
+          },
+          enumerable: true,
+          configurable: true
+        })
+
+      NOUVEAU !
+      Les classes ES6 offrent également une syntaxe simplifiée pour définir
+      des accesseurs et mutateurs de propriétés sur les instances de la
+      classe (avec `get` et `set`).
+
+      Exemple en ES6 :
+        ------------------------------------------------------------
+        class Point {
+          // Constructeur de la classe
+          constructor(x, y) {
+            this.x = x;
+            this.y = y;
+          }
+
+          getNorme() {
+            return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
+          }
+
+          // Mutateur de propriété
+          setNorme(nouvelleNorme) {
+            if (this.norme === 0) {
               return;
-            },
-            enumerable: true,
-            configurable: true
-          })
-
-        NOUVEAU !
-        Les classes ES6 offrent également une syntaxe simplifiée pour définir
-        des accesseurs et mutateurs de propriétés sur les instances de la
-        classe (avec `get` et `set`).
-
-        Exemple en ES6 :
-          ------------------------------------------------------------
-          class Point {
-            // Constructeur de la classe
-            constructor(x, y) {
-              this.x = x;
-              this.y = y;
             }
+            this.x = this.x / this.norme * nouvelleNorme;
+            this.y = this.y / this.norme * nouvelleNorme;
+          }
+          // Accesseur de propriété
+          get norme() {
+            return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
+          }
 
-            // Accesseur de propriété
-            get norme() {
+          // Mutateur de propriété
+          set norme(nouvelleNorme) {
+            if (this.norme === 0) {
+              return;
+            }
+            this.x = this.x / this.norme * nouvelleNorme;
+            this.y = this.y / this.norme * nouvelleNorme;
+          }
+        }
+
+        const B = new Point(3, 4);
+        B.norme; // 5
+        ------------------------------------------------------------
+
+      Code équivalent en ES5 :
+        ------------------------------------------------------------
+        "use strict";
+        var Point = (function () {
+          // Constructeur de la classe
+          function Point(x, y) {
+            this.x = x;
+            this.y = y;
+          }
+
+          // Accesseur de propriété
+          Object.defineProperty(Point.prototype, "norme", {
+            get: function() {
               return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
-            }
-
-            // Mutateur de propriété
-            set norme(nouvelleNorme) {
+            },
+            set: function(nouvelleNorme) {
               if (this.norme === 0) {
                 return;
               }
               this.x = this.x / this.norme * nouvelleNorme;
               this.y = this.y / this.norme * nouvelleNorme;
-            }
-          }
+            },
+            enumerable: true,
+            configurable: true
+          }):
 
-          const B = new Point(3, 4);
-          B.norme; // 5
-          ------------------------------------------------------------
+          return Point;
+        }());
 
-        Code équivalent en ES5 :
-          ------------------------------------------------------------
-          "use strict";
-          var Point = (function () {
-            // Constructeur de la classe
-            function Point(x, y) {
-              this.x = x;
-              this.y = y;
-            }
+        var B = new Point(3, 4);
+        B.norme; // 5
+        ------------------------------------------------------------
+    */
 
-            // Accesseur de propriété
-            Object.defineProperty(Point.prototype, "norme", {
-              get: function() {
-                return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
-              },
-              set: function(nouvelleNorme) {
-                if (this.norme === 0) {
-                  return;
-                }
-                this.x = this.x / this.norme * nouvelleNorme;
-                this.y = this.y / this.norme * nouvelleNorme;
-              },
-              enumerable: true,
-              configurable: true
-            }):
+    /*
+      Reprenez le code de l'exercice précédent.
 
-            return Point;
-          }());
+      1. Nous allons ajouter à la classe Rectangle des propriétés numériques
+      sous forme d'accesseur de propriété pour récupérer les coordonnées des
+      segments du rectangle et nous éviter des calculs répétitifs. Appelez ces
+      propriétés `haut`, `bas`, `gauche`, `droite`. Le bord gauche se calcule
+      en partant du bord droit et en ajoutant la largeur du rectangle, et
+      ainsi de suite.
 
-          var B = new Point(3, 4);
-          B.norme; // 5
-          ------------------------------------------------------------
-      */
+      2. Créez deux rectangles r1 et r2 comme précédemment et affichez dans la
+      console les coordonnées de leurs 4 bords.
+    */
+    class Point {
+      constructor(x, y) {
+        if (typeof x !== "number" || typeof y !== "number") {
+          throw `Point: x (${x}) and y (${y}) must be numbers`;
+        }
+        this.x = x;
+        this.y = y;
+      }
+    }
 
-      /*
-        Reprenez le code de l'exercice précédent.
 
-        1. Nous allons ajouter à la classe Rectangle des propriétés numériques
-        sous forme d'accesseur de propriété pour récupérer les coordonnées des
-        segments du rectangle et nous éviter des calculs répétitifs. Appelez ces
-        propriétés `haut`, `bas`, `gauche`, `droite`. Le bord gauche se calcule
-        en partant du bord droit et en ajoutant la largeur du rectangle, et
-        ainsi de suite.
+    class Rectangle {
+      constructor(x, y, longueur, largeur) {
+        this.déplacerÀ(x, y);
+        this.redimensionner(longueur, largeur);
+        
+      }
+      // coinHautGauche() {
+      //   return `(${this.hautGauche.x}, ${this.hautGauche.y})`;
+      // }
+      // coinHautDroite() {
+      //   return `(${this.hautGauche.x + this.longueur}, ${this.hautGauche.y})`;
+      // }
+      // coinBasGauche() {
+      //   return `(${this.hautGauche.x}, ${this.hautGauche.y + this.largeur})`;
+      // }
+      // coinBasDroite() {
+      //   return `(${this.hautGauche.x + this.longueur}, ${this.hautGauche.y + this.largeur})`;
+      // }
 
-        2. Créez deux rectangles r1 et r2 comme précédemment et affichez dans la
-        console les coordonnées de leurs 4 bords.
-      */
-    </script>
-    <noscript>
-      <p>VirtuoWorks® - tous droits réservés©</p>
-    </noscript>
-  </body>
+        get haut(){
+          
+          const from = `(${this.hautGauche.x}, ${this.hautGauche.y})`;
+          const to = `(${this.hautGauche.x + this.longueur}, ${this.hautGauche.y})`;
+          
+          return {from ,to}; 
+          
+        }
+
+        get bas(){
+          
+          const from = `(${this.hautGauche.x}, ${this.hautGauche.y + this.largeur})`;
+          const to = `(${this.hautGauche.x + this.longueur}, ${this.hautGauche.y + this.largeur})`;
+          
+          return {from ,to}; 
+          
+        }
+
+        get gauche(){
+          
+          const from = `(${this.hautGauche.x}, ${this.hautGauche.y})`;
+          const to = `(${this.hautGauche.x}, ${this.hautGauche.y + this.largeur})`;
+          
+          return {from ,to}; 
+          
+        }
+
+        get droite(){
+          
+          const from = `(${this.hautGauche.x + this.longueur}, ${this.hautGauche.y})`;
+          const to = `(${this.hautGauche.x + this.longueur}, ${this.hautGauche.y + this.largeur})`;
+          
+          return {from ,to}; 
+          
+        }
+      displayCoordinates() {
+        return `(Haut : ${this.haut.from} ${this.haut.to}), Droit : (${this.droite.from} ${this.droite.to}), Bas : (${this.bas.from} ${this.bas.to}), Gauche : (${this.gauche.from} ${this.gauche.to})`;
+      
+      }
+
+      déplacerÀ(x, y) {
+        try {
+          this.hautGauche = new Point(x, y);
+        } catch (e) {
+          throw `Rectangle.déplacerA: ${e}`;
+        }
+      }
+      redimensionner(longueur, largeur) {
+        if (typeof longueur !== "number" || typeof largeur !== "number") {
+          throw `Rectangle.redimensionner: longueur ${longueur} and largeur ${largeur} must be numbers`
+        }
+        this.longueur = longueur;
+        this.largeur = largeur;
+      }
+    }
+
+    try {
+      new Rectangle('1', 1, 6, 4)
+    } catch (e) {
+      console.error(e);
+    }
+    try {
+      new Rectangle(1, '2', 6, 4)
+    } catch (e) {
+      console.error(e);
+    }
+    const r1 = new Rectangle(3, 1, 6, 4);
+    const r2 = new Rectangle(-3, 0, 6, 6);
+    console.log("init");
+    console.log(r1.displayCoordinates());
+    console.log(r2.displayCoordinates());
+
+    // r1.déplacerÀ(12, 18);
+    // r2.déplacerÀ(9, 13);
+    // console.log("Déplacer");
+    // console.log(r1.displayCoordinates());
+    // console.log(r2.displayCoordinates());
+
+    // r1.redimensionner(10, 5);
+    // r2.redimensionner(20, 4);
+    // console.log("Redimensionner");
+    // console.log(r1.displayCoordinates());
+    // console.log(r2.displayCoordinates());
+  </script>
+  <noscript>
+    <p>VirtuoWorks® - tous droits réservés©</p>
+  </noscript>
+</body>
+
 </html>

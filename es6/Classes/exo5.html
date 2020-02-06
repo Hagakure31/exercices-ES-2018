@@ -1,84 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Classes</title>
-  </head>
-  <body>
-    <script>
-      /*
-        NOUVEAUTÉ !
-        Un des avantages de l'introduction de la syntaxe `class` en ES6 tient
-        dans la facilité à créer des classes dérivées. On utilise pour cela le
-        mot-clé `extends`.
 
-        Exemple :
-          ------------------------------------------------------------
-          // Classe de base
-          class Ville {
-            constructor(nom,departement,lieu,climat) {
-              this.nom = nom;
-              this.departement = departement;
-              this.lieu = lieu;
-              this.climat = climat;
-            }
-​
-            situation() {
-              console.log(`La ville de ${this.nom} est située dans le département ${this.departement}.`);
-            }
-​
-            geographie() {
-              console.log(`Nous sommes en ${this.lieu} et le climat est de type ${this.climat}.`);
-            }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Classes</title>
+</head>
+
+<body>
+  <script>
+    /*
+      NOUVEAUTÉ !
+      Un des avantages de l'introduction de la syntaxe `class` en ES6 tient
+      dans la facilité à créer des classes dérivées. On utilise pour cela le
+      mot-clé `extends`.
+
+      Exemple :
+        ------------------------------------------------------------
+        // Classe de base
+        class Ville {
+          constructor(nom,departement,lieu,climat) {
+            this.nom = nom;
+            this.departement = departement;
+            this.lieu = lieu;
+            this.climat = climat;
           }
 ​
-          // Classe dérivée de la classe de base
-          class VilleMontagne extends Ville {
-            constructor (nom,departement) {
-              super (nom, departement,'Montagne','Montagnard')
-            }
+          situation() {
+            console.log(`La ville de ${this.nom} est située dans le département ${this.departement}.`);
           }
-  ​
-          // Autre classe dérivée
-          class VillePlaine extends Ville {
-            constructor (nom,departement) {
-              super (nom, departement,'Plaine','tempéré')
-            }
+​
+          geographie() {
+            console.log(`Nous sommes en ${this.lieu} et le climat est de type ${this.climat}.`);
           }
-  ​
-          var chamonix = new VilleMontagne('Chamonix','Hautes-Savoie');
-          console.log(chamonix);
-          chamonix.situation();
-          chamonix.geographie();
-  ​
-          var dijon = new VilleMontagne('Dijon','Côtes d\'Or');
-          console.log(dijon);
-          dijon.situation();
-          ------------------------------------------------------------
-      */
+        }
+​
+        // Classe dérivée de la classe de base
+        class VilleMontagne extends Ville {
+          constructor (nom,departement) {
+            super (nom, departement,'Montagne','Montagnard')
+          }
+        }
+​
+        // Autre classe dérivée
+        class VillePlaine extends Ville {
+          constructor (nom,departement) {
+            super (nom, departement,'Plaine','tempéré')
+          }
+        }
+​
+        var chamonix = new VilleMontagne('Chamonix','Hautes-Savoie');
+        console.log(chamonix);
+        chamonix.situation();
+        chamonix.geographie();
+​
+        var dijon = new VilleMontagne('Dijon','Côtes d\'Or');
+        console.log(dijon);
+        dijon.situation();
+        ------------------------------------------------------------
+    */
 
-      /*
-        1. Reprenez la classe Rectangle précédente et créez une nouvelle classe
-        que vous appellerez RectangleColoré et qui dérivera de la classe
-        Rectangle. Les instances de la classe RectangleColoré auront une
-        propriété 'couleur' qui n'était pas présente sur la classe d'origine.
+    /*
+      1. Reprenez la classe Rectangle précédente et créez une nouvelle classe
+      que vous appellerez RectangleColoré et qui dérivera de la classe
+      Rectangle. Les instances de la classe RectangleColoré auront une
+      propriété 'couleur' qui n'était pas présente sur la classe d'origine.
 
-        2. Créez désormais une classe Carré qui héritera également de la classe
-        Rectangle. Un carré est un rectangle dont la largeur et la hauteur sont
-        égaux. Faites transparaître cette propriété dans la liste des arguments
-        attendus par le constructeur de la classe Carré.
+      2. Créez désormais une classe Carré qui héritera également de la classe
+      Rectangle. Un carré est un rectangle dont la largeur et la hauteur sont
+      égaux. Faites transparaître cette propriété dans la liste des arguments
+      attendus par le constructeur de la classe Carré.
 
-        3. Ajoutez également une méthode statique `dériverDe` à la classe
-        RectangleColoré, qui prendra en argument un rectangle classique ainsi
-        qu'une chaîne de caractère représentant une couleur. Cette méthode
-        renverra un nouveau rectangle coloré en recopiant les caractéristiques
-        d'un rectangle simple.
-      */
-    </script>
-    <noscript>
-      <p>VirtuoWorks® - tous droits réservés©</p>
-    </noscript>
-  </body>
+      3. Ajoutez également une méthode statique `dériverDe` à la classe
+      RectangleColoré, qui prendra en argument un rectangle classique ainsi
+      qu'une chaîne de caractère représentant une couleur. Cette méthode
+      renverra un nouveau rectangle coloré en recopiant les caractéristiques
+      d'un rectangle simple.
+    */
+
+    class Point {
+      constructor(x, y) {
+        if (typeof x !== "number" || typeof y !== "number") {
+          throw `Point: x (${x}) and y (${y}) must be numbers`;
+        }
+        this.x = x;
+        this.y = y;
+      }
+    }
+
+
+    class Rectangle {
+      constructor(x, y, longueur, largeur) {
+
+        this.déplacerÀ(x, y);
+        this.redimensionner(longueur, largeur);
+      }
+
+
+      get haut() {
+        return { from: new Point(this.x, this.y), to: new Point(this.x + this.longueur, this.y) };
+      }
+
+      get bas() {
+        return { from: new Point(this.x, this.y + this.largeur), to: new Point(this.x + this.longueur, this.y + this.largeur) };
+      }
+
+      get gauche() {
+        return { from: new Point(this.x, this.y), to: new Point(this.x, this.y + this.largeur) };
+      }
+
+      get droite() {
+
+        return { from: new Point(this.x + this.longueur, this.y), to: new Point(this.x + this.longueur, this.y + this.largeur) };
+      }
+      get x() {
+        return this.startPoint.x;
+      }
+      get y() {
+        return this.startPoint.y;
+      }
+      
+      displayCoordinates() {
+        return [this.haut.from, this.haut.to, this.droite.from, this.droite.to, this.bas.from, this.bas.to, this.gauche.from, this.gauche.to];
+      }
+
+      déplacerÀ(x, y) {
+        try {
+          this.startPoint = new Point(x, y);
+        } catch (e) {
+          throw `Rectangle.déplacerA: ${e}`;
+        }
+      }
+
+      redimensionner(longueur, largeur) {
+        if (typeof longueur !== "number" || typeof largeur !== "number") {
+          throw `Rectangle.redimensionner: longueur ${longueur} and largeur ${largeur} must be numbers`
+        }
+        this.longueur = longueur;
+        this.largeur = largeur;
+      }
+    }
+    
+    class RectangleColoré extends Rectangle {
+      constructor(x, y , longueur, largeur, couleur){
+        super(x, y, longueur, largeur);
+        this.couleur = couleur;
+      }
+
+      static dériverDe(rect, couleur){
+        return new RectangleColoré(rect.x, rect.y, rect.longueur, rect.largeur, couleur);
+      }
+    }
+
+    class Carré extends Rectangle {
+      constructor(x, y, côté) {
+        super(x, y, côté, côté)
+        
+      }
+    }
+
+    const r1 = new Rectangle(5, 5, 15, 7);
+    const r2 = new Rectangle(12, 8, 15, 9);
+    const r3 = new RectangleColoré(12, 8, 15, 9, "Rouge");
+    const r4 = new Carré(14, 5, 10);
+
+    console.log("init");
+    console.log(r1.displayCoordinates());
+    console.log(r2.displayCoordinates());
+    console.log(r3);
+    console.log(r4);
+    console.log(RectangleColoré.dériverDe(r1, "Bleu"));
+  </script>
+  <noscript>
+    <p>VirtuoWorks® - tous droits réservés©</p>
+  </noscript>
+</body>
+
 </html>

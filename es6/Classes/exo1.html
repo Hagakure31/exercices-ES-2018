@@ -1,87 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Classes</title>
-  </head>
-  <body>
-    <script>
-      /*
-        NOUVEAUTÉ !
-        ES6 introduit un sucre syntaxique pour l'écriture de fonctions
-        constructeur avec l'introduction de la syntaxe `class`.
 
-        Cette syntaxe reprend de façon artificielle l'écriture de classes telle
-        qu'elle est présente dans d'autres langages dits "orientés objets" tels
-        Java ou C#. Dans ces langages, la notion de classe est présente mais
-        diffère radicalement des "classes" en JavaScript.
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Classes</title>
+</head>
 
-        En effet, les classes en JavaScript sont à voir comme une facilité
-        d'écriture. Elles ne doivent pas faire oublier le fait que la création
-        d'objets avec le mot-clé `class` équivaut toujours à une création
-        d'objet par l'intermédiaire d'une FONCTION CONSTRUCTEUR, comme nous
-        allons le voir.
+<body>
+  <script>
+    /*
+      NOUVEAUTÉ !
+      ES6 introduit un sucre syntaxique pour l'écriture de fonctions
+      constructeur avec l'introduction de la syntaxe `class`.
 
-        Exemple de classe ES6 :
-          ------------------------------------------------------------
-          class Point {
-            // Constructeur de la classe
-            constructor(x, y) {
-              this.x = x;
-              this.y = y;
-            }
+      Cette syntaxe reprend de façon artificielle l'écriture de classes telle
+      qu'elle est présente dans d'autres langages dits "orientés objets" tels
+      Java ou C#. Dans ces langages, la notion de classe est présente mais
+      diffère radicalement des "classes" en JavaScript.
+
+      En effet, les classes en JavaScript sont à voir comme une facilité
+      d'écriture. Elles ne doivent pas faire oublier le fait que la création
+      d'objets avec le mot-clé `class` équivaut toujours à une création
+      d'objet par l'intermédiaire d'une FONCTION CONSTRUCTEUR, comme nous
+      allons le voir.
+
+      Exemple de classe ES6 :
+        ------------------------------------------------------------
+        class Point {
+          // Constructeur de la classe
+          constructor(x, y) {
+            this.x = x;
+            this.y = y;
           }
+        }
 
-          const A = new Point(1, 2);
-          A.x; // 1
-          A.y; // 2
-          ------------------------------------------------------------
-        Code équivalent en ES5 :
-          ------------------------------------------------------------
-          "use strict";
-          var Point = (function () {
-              // Fonction constructeur équivalente
-              function Point(x, y) {
-                  this.x = x;
-                  this.y = y;
-              }
+        const A = new Point(1, 2);
+        A.x; // 1
+        A.y; // 2
+        ------------------------------------------------------------
+      Code équivalent en ES5 :
+        ------------------------------------------------------------
+        "use strict";
+        var Point = (function () {
+            // Fonction constructeur équivalente
+            function Point(x, y) {
+                this.x = x;
+                this.y = y;
+            }
 
-              return Point
-          }());
+            return Point
+        }());
 
-          var A = new Point(1, 2);
-          A.x; // 1
-          A.y; // 2
-          ------------------------------------------------------------
-      */
+        var A = new Point(1, 2);
+        A.x; // 1
+        A.y; // 2
+        ------------------------------------------------------------
+    */
 
-      /*
-        1. Créez une classe Rectangle.
-        Cette classe permet de créer des objets qui possèdent des coordonnées
-        `x` et `y` correspondant au coin supérieur gauche du rectangle, ainsi
-        qu'une largeur et une longueur.
+    /*
+      1. Créez une classe Rectangle.
+      Cette classe permet de créer des objets qui possèdent des coordonnées
+      `x` et `y` correspondant au coin supérieur gauche du rectangle, ainsi
+      qu'une largeur et une longueur.
 
-        2. Instanciez deux rectangles r1 et r2 à partir de votre classe. Ces
-        rectangles auront pour coordonnées :
-        r1 : (1, 4), (7, 4), (7, 1), (1, 1)
-        r2 : (-3, 6), (3, 6), (3, 0), (-3, 0)
+      2. Instanciez deux rectangles r1 et r2 à partir de votre classe. Ces
+      rectangles auront pour coordonnées :
+      r1 : (1, 4), (7, 4), (7, 1), (1, 1)
+      r2 : (-3, 6), (3, 6), (3, 0), (-3, 0)
 
-        Affichez les deux rectangles dans la console.
+      Affichez les deux rectangles dans la console.
 
-        3. Affichez dans la console la valeur de Rectangle.prototype. Que
-        constatez-vous ? Comparez cette valeur avec les valeurs de r1.__proto__
-        et r2.__proto__.
+      3. Affichez dans la console la valeur de Rectangle.prototype. Que
+      constatez-vous ? Comparez cette valeur avec les valeurs de r1.__proto__
+      et r2.__proto__.
 
-        4. Réécrivez la classe en code ES5 (appelez-la `RectangleES5`) et créez
-        deux rectangles r3 et r4 identiques aux rectangles r1 et r2. Affichez
-        r3 et r4 dans la console et vérifiez que vous obtenez les mêmes valeurs
-        que pour r1 et r2.
-      */
-    </script>
-    <noscript>
-      <p>VirtuoWorks® - tous droits réservés©</p>
-    </noscript>
-  </body>
+      4. Réécrivez la classe en code ES5 (appelez-la `RectangleES5`) et créez
+      deux rectangles r3 et r4 identiques aux rectangles r1 et r2. Affichez
+      r3 et r4 dans la console et vérifiez que vous obtenez les mêmes valeurs
+      que pour r1 et r2.
+    */
+
+
+    //ES6
+    class Point {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+      }
+    }
+    class Rectangle {
+      constructor(x, y, longueur, largeur) {
+
+        this.hautGauche = new Point(x, y);
+        this.longueur = longueur;
+        this.largeur = largeur;
+      }
+      coinHautGauche() {
+        return `(${this.hautGauche.x}, ${this.hautGauche.y})`;
+      }
+      coinHautDroite() {
+        return `(${this.hautGauche.x + this.longueur}, ${this.hautGauche.y})`;
+      }
+      coinBasGauche() {
+        return `(${this.hautGauche.x}, ${this.hautGauche.y + this.largeur})`;
+      }
+      coinBasDroite() {
+        return `(${this.hautGauche.x + this.longueur}, ${this.hautGauche.y + this.largeur})`;
+      }
+      displayCoordinates() {
+        return `${this.coinBasGauche()}, ${this.coinBasDroite()}, ${this.coinHautDroite()}, ${this.coinHautGauche()}`;
+      }
+    }
+
+    const r1 = new Rectangle(1, 1, 6, 3);
+    const r2 = new Rectangle(-3, 0, 6, 6);
+    console.log(r1.displayCoordinates());
+    console.log(r2.displayCoordinates());
+    console.log(Rectangle.prototype);
+    console.log(r1.__proto__);
+    console.log(r2.__proto__);
+
+    //ES5
+
+    function RectangleES5(x, y, longueur, largeur) {
+      this.hautGauche = new Point(x, y);
+      this.longueur = longueur;
+      this.largeur = largeur;
+
+    }
+
+    RectangleES5.prototype.coinHautGauche = function () {
+      return `(${this.hautGauche.x}, ${this.hautGauche.y})`;
+
+    }
+
+    RectangleES5.prototype.coinHautDroite = function () {
+      return `(${this.hautGauche.x + this.longueur}, ${this.hautGauche.y})`;
+    }
+
+    RectangleES5.prototype.coinBasGauche = function () {
+      return `(${this.hautGauche.x}, ${this.hautGauche.y + this.largeur})`;
+    }
+    RectangleES5.prototype.coinBasDroite = function () {
+      return `(${this.hautGauche.x + this.longueur}, ${this.hautGauche.y + this.largeur})`;
+    }
+
+    RectangleES5.prototype.displayCoordinates = function () {
+      return `${this.coinBasGauche()}, ${this.coinBasDroite()}, ${this.coinHautDroite()}, ${this.coinHautGauche()}`;
+    }
+
+
+
+
+
+    var r3 = new RectangleES5(1, 1, 6, 3);
+    var r4 = new RectangleES5(-3, 0, 6, 6);
+
+    console.log(r3.displayCoordinates());
+    console.log(r4.displayCoordinates());
+    console.log(RectangleES5.prototype);
+    console.log(r3.__proto__);
+    console.log(r4.__proto__);
+
+
+
+  </script>
+
+  <noscript>
+    <p>VirtuoWorks® - tous droits réservés©</p>
+  </noscript>
+</body>
+
 </html>
