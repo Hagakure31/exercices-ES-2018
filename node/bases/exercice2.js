@@ -50,6 +50,8 @@
     Chargez ce module dans le module principal pour que les 2 messages soient
     affichés à la suite.
 **/
+console.log("Je suis le module principale");
+
 
 /**
     2. Dans votre module secondaire, faîtes en sorte d'afficher :
@@ -88,6 +90,10 @@
     --> Dans votre module principal (celui-ci), utilisez la fonction (qui sera
     donc une méthode de l'objet retourné par la méthode module.require())
 **/
+const args = parseInt(process.argv.slice(2));
+let objetRequire = module.require('exercice2-module.js');
+objetRequire.spamBonjour(args);
+
 
 /**
     4. Dans votre module secondaire :
@@ -97,7 +103,49 @@
       cette propriété pour l'afficher dans la console. Utilisez cet objet dans
       votre module principal en exécutant sa méthode.
 **/
-
+console.log(objetRequire.replique[0] + objetRequire.replique[1] + objetRequire.replique[2]);
+console.log(objetRequire.objetRepetition.donnerAge());
 /**
  * Sami Radi - VirtuoWorks® - tous droits réservés©
 **/
+
+
+// function fonctionP(callBackNegatif, callBackPositif){
+//   if (Math.random() > .5) {
+//     callBackPositif("supérieur à 0.5")
+//   } else {
+//     callBackNegatif("inférieur à 0.5")
+//   }
+
+// }
+
+// function callBackPositif(résultat){
+//   console.log("Oui, le nombre est " + résultat);
+// }
+
+// function callBackNegatif(erreur){
+//   console.error("Non, le nombre est " + erreur);
+// }
+
+// fonctionP(callBackNegatif, callBackPositif);
+
+
+
+
+
+
+
+// let p = new Promise((resolve, reject) => {
+//   let x = Math.random();
+//   if(x > .5){
+//     resolve("supérieur à 0.5"); 
+//   }else{
+//     reject("inférieur à 0.5")
+//   }
+// })
+
+// p.then((message) =>{
+//     console.log("Oui, le nombre est " + message);
+// }).catch((message) => {
+//     console.log("Non, le nombre est " + message);
+// });

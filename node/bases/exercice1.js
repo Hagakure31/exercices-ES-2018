@@ -56,7 +56,9 @@
       - Le nom du dossier dans lequel le programme s'exécute obtenu autrement
         (voir Process)
 **/
-
+console.log(__filename);
+console.log(__dirname);
+console.log(process.cwd());
 /**
     2. Écrivez un programme que vous exécuterez à l'aide de Node JS. Ce
     programme prend en argument un nombre.
@@ -70,7 +72,20 @@
     Si le programme n'a pas de nombre en argument ou autre chose qu'un nombre,
     le programme doit afficher Au Revoir ! dans la console.
 **/
+var args = parseInt(process.argv.slice(2));
+console.log(args);
 
+
+function spamBonjour(args) {
+  if (isNaN(args)) {
+    console.log("Au revoir");
+  }else{
+    for (let i = 1; i <= args; i++) {
+      console.log(`Bonjour ${i} fois ! `);
+    }
+  }
+};
+spamBonjour(args);
 /**
     3. Améliorez votre programme. Créez une fonction qui prend en argument un
     nombre et qui affiche autant de fois Bonjour que le nombre fourni en

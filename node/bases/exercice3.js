@@ -55,6 +55,14 @@
   1. Écrivez un programme qui créé un fichier texte (de façon asynchrone) encodé
   en utf8 contenant le message "Ceci est un message écrit par Node JS".
 **/
+const moduleEx3 = require('exercice3-module.js');
+
+
+const fs = require('fs');
+
+fs.writeFile('writeFile.js', 'Ceci est un message écrit par Node JS', () => {
+  console.log("Le fichier à été créé");
+});
 
 /**
   2. Écrivez un programme qui vérifie si un fichier texte existe et qui affiche
@@ -69,6 +77,8 @@
   méthodes asynchrones qui les exécutent.
 **/
 
+
+moduleEx3.lectureDuFichier("writeFile.js");
 /**
   3. Écrivez un programme qui affiche dans la console le contenu d'un fichier,
   si il existe, dont le nom/chemin est passé en argument lors de l'exécution

@@ -22,7 +22,9 @@
     2. Chargez le module chalk dans votre module principal et affichez dans la
     console en VERT un message pour indiquer que chalk est installé.
 **/
+  const chalk = require('chalk');
 
+  console.log(chalk.green("Le module chalk a bien été installé"));
 /**
     3.
     - Affichez un message d'erreur en rouge
@@ -32,6 +34,12 @@
     - Affichez un message important en gras
       (par exemple: "Ceci est un message important !").
 **/
+
+  console.error(chalk.red("Une erreur est survenue"));
+
+  console.debug(chalk.grey("Ceci est un message de debug"));
+
+  console.log(chalk.bgBlack.underline("Ceci est un message important !"));
 
 /**
     4. Prenez l'habitude d'utiliser :
